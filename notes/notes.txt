@@ -1,0 +1,167 @@
+//arrays //arrays //arrays //arrays
+
+    string[] names = {"Lucas", "Maria"};
+
+    /*for (int i = 0; i < names.Length; i++)
+    {
+        Console.WriteLine(names[i]);
+    }*/
+
+    foreach (string name in names)
+    {
+        Console.WriteLine(name);
+    }
+//* --------------------------------- /// ----------------------------- /// -------------------------*//    
+
+//conversões implícitas e explícitas //conversões implícitas e explícitas //conversões implícitas e explícitas
+
+    int i = 10;      //int = 32 bits
+    long l = 321465485406545;   //long = 64 bits
+
+    l = i;  //conversão implícita
+    i = (int)l;  //conversão explícita
+
+    Console.WriteLine(i);   //sai um outro valor
+
+//* --------------------------------- /// ----------------------------- /// -------------------------*//    
+
+//Tipos de referência e tipos de valor // Tipos de referência e tipos de valor //Tipos de referência e tipos de valor
+
+    int i = 10;       
+    int i2 = i;
+
+    Test t = new Test();    //class Test{ public int x;}
+    t.x = 12; 
+
+    Test test2 = t;
+    test2 = new Test();
+    test2.x = 20;
+
+    Console.WriteLine(t.x);
+
+//* --------------------------------- /// ----------------------------- /// -------------------------*//    
+
+//Tipos anuláveis  //Tipos anuláveis   //Tipos anuláveis  //Tipos anuláveis  
+
+    int? i = 10;   //para ser anulável
+    int? i2 = i;
+    i2 = 20;
+
+    i = null;  //só aceita por causa do '?' na declaração
+
+    if(i is null) {
+        Console.WriteLine("Nulo");
+    }
+
+//* --------------------------------- /// ----------------------------- /// -------------------------*//    
+
+//Classes  //Classes   //Classes  //Classes  
+
+class Program
+{
+    static void Main()
+    {
+        //ILogger logger = new ConsoleLogger();
+        ILogger logger = new FileLogger("mylog.txt");
+        BankAccount account1 = new BankAccount("Lucas", 25000, logger);        
+        BankAccount account2 = new BankAccount("Maria", 20000, logger);
+
+        /*account1.Deposit(-100);
+        account2.Deposit(100);
+        Console.WriteLine(account1.Balance);*/
+
+        //List<BankAccount> accounts = new List<BankAccount>();    //outra possibilidade de incialização abaixo
+        List<BankAccount> accounts = new List<BankAccount>
+        {
+            account1,    //accounts.Add(account1); é igual
+            account2
+        };
+
+        //accounts.Remove(account1);
+
+        List<int> numbers = new List<int> {1, 4, 8, 10};
+
+        foreach (BankAccount account in accounts)
+        {
+            Console.WriteLine(account.Balance);
+        }
+
+        DataStore<int> store = new DataStore<int>();
+        Console.WriteLine(store.Value);
+    }
+}
+
+class DataStore<T>  //tipo genérico
+{
+    public T Value {get; set;}
+}
+
+class FileLogger : ILogger
+{
+    private readonly string filePath;
+
+    public FileLogger(string filePath)
+    {
+        this.filePath = filePath;
+    }
+
+    public void Log(string message)
+    {
+        File.AppendAllText(filePath, $"{message}{Environment.NewLine}");   //Cria um novo arquivo
+    }
+}
+
+class ConsoleLogger : ILogger   //aqui o 'extends' é representado por :
+{
+    
+}
+
+interface ILogger
+{
+    void Log(string message)
+    {
+        Console.WriteLine($"LOGGER: {message}");
+    }
+}
+
+class BankAccount
+{
+    private string name;        //por padrão, fields de classes são privados se não colocar 'public'
+    private decimal balance;
+    private readonly ILogger logger;   //readonly só pode atribuir valor dentro de construtor
+
+    public decimal Balance  //prop  
+    { 
+        get { return balance; }
+        private set { this.balance = value; } 
+    }    
+
+    public BankAccount(string name, decimal balance, ILogger logger)     //constructor
+    {
+        if(string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Nome inválido", nameof(name));
+        }
+        if(balance < 0)
+        {
+            throw new Exception("Saldo não pode ser negativo");
+        }
+        this.name = name;
+        this.balance = balance;
+        this.logger = logger;
+    }
+
+    public void Deposit(decimal amount)
+    {
+        if(amount <= 0)
+        {
+            logger.Log($"Não é possível depositar {amount} na conta de {name}");
+            return;
+        } 
+        balance += amount;              
+    }
+}
+
+
+
+//* --------------------------------- /// ----------------------------- /// -------------------------*//    

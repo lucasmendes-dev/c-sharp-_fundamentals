@@ -1,0 +1,15 @@
+C:\Users\Lucas\Documents\My Own Projects\C#\bin\Debug\net7.0\C#.exe
+C:\Users\Lucas\Documents\My Own Projects\C#\bin\Debug\net7.0\C#.deps.json
+C:\Users\Lucas\Documents\My Own Projects\C#\bin\Debug\net7.0\C#.runtimeconfig.json
+C:\Users\Lucas\Documents\My Own Projects\C#\bin\Debug\net7.0\C#.dll
+C:\Users\Lucas\Documents\My Own Projects\C#\bin\Debug\net7.0\C#.pdb
+C:\Users\Lucas\Documents\My Own Projects\C#\obj\Debug\net7.0\C#.csproj.AssemblyReference.cache
+C:\Users\Lucas\Documents\My Own Projects\C#\obj\Debug\net7.0\C#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lucas\Documents\My Own Projects\C#\obj\Debug\net7.0\C#.AssemblyInfoInputs.cache
+C:\Users\Lucas\Documents\My Own Projects\C#\obj\Debug\net7.0\C#.AssemblyInfo.cs
+C:\Users\Lucas\Documents\My Own Projects\C#\obj\Debug\net7.0\C#.csproj.CoreCompileInputs.cache
+C:\Users\Lucas\Documents\My Own Projects\C#\obj\Debug\net7.0\C#.dll
+C:\Users\Lucas\Documents\My Own Projects\C#\obj\Debug\net7.0\refint\C#.dll
+C:\Users\Lucas\Documents\My Own Projects\C#\obj\Debug\net7.0\C#.pdb
+C:\Users\Lucas\Documents\My Own Projects\C#\obj\Debug\net7.0\C#.genruntimeconfig.cache
+C:\Users\Lucas\Documents\My Own Projects\C#\obj\Debug\net7.0\ref\C#.dll
